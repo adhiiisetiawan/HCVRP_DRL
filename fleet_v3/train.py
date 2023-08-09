@@ -3,6 +3,7 @@ import time
 from tqdm import tqdm
 import torch
 import math
+import matplotlib.pyplot as plt
 
 from torch.utils.data import DataLoader
 from torch.nn import DataParallel
@@ -86,7 +87,8 @@ def plot_grad_flow(model):
     plt.title("Gradient flow")
     plt.grid(True)
     plt.tight_layout()
-    plt.show()
+    # plt.show()
+    plt.savefig("./gradient_flow_plot.png")
 
 def train_epoch(model, optimizer, baseline, lr_scheduler, epoch, val_dataset, problem, tb_logger, opts):
     print("Start train epoch {}, lr={} for run {}".format(epoch, optimizer.param_groups[0]['lr'], opts.run_name))
