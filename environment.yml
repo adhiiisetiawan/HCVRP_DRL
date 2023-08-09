@@ -1,0 +1,16 @@
+name: HCVRP
+channels:
+  - pytorch
+  - defaults
+dependencies:
+  - python=3.7
+  - pytorch==1.4.0
+  - cudatoolkit=10.1
+  - numpy
+  - scipy
+  - tqdm
+  - matplotlib
+  - tensorboard
+  - pip
+  - pip:
+    - tensorboard_logger
