@@ -8,3 +8,5 @@ __pycache__/
 *.log
 *.bak
 *.txt
+instances/Vrp-Set-A/A/
+instances/Vrp-Set-X/X/
