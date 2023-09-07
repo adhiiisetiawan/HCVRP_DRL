@@ -10,3 +10,4 @@ __pycache__/
 *.txt
 instances/Vrp-Set-A/A/
 instances/Vrp-Set-X/X/
+fleet_v3/data/visualization/

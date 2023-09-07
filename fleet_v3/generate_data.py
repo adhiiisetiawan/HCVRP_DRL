@@ -1,5 +1,6 @@
 import os
 import numpy as np
+import matplotlib.pyplot as plt
 from utils.data_utils import check_extension, save_dataset
 import torch
 import pickle
@@ -35,7 +36,36 @@ def generate_hcvrp_data(dataset_size, hcvrp_size, veh_num):
             data.append(thedata)
 
     data = np.array(data).reshape(1280, 4)
+    print(f"total data {len(data)}")
     return data
+
+def visualize_hcvrp_data(data, save_dir):
+    os.makedirs(save_dir, exist_ok=True)
+    for i, instance in enumerate(data):
+        depot, customers, demands, capacities = instance
+        num_customers = len(customers)
+        
+        # Convert customers to a NumPy array
+        customers = np.array(customers)
+        
+        # Create a scatter plot to visualize depot and customer locations
+        plt.figure(figsize=(8, 6))
+        plt.scatter(depot[0], depot[1], c='g', marker='s', label='Depot')
+        plt.scatter(customers[:, 0], customers[:, 1], c='b', marker='o', label='Customers')
+        
+        # Add labels for customer indices
+        for j, (x, y) in enumerate(customers):
+            plt.annotate(str(j + 1), (x, y), fontsize=12)
+        
+        plt.title(f'HCVRP Instance {i+1}')
+        plt.xlabel('X-coordinate')
+        plt.ylabel('Y-coordinate')
+        plt.legend()
+        
+        # Save the visualization as an image (e.g., JPG)
+        image_filename = os.path.join(save_dir, f'hcvrp_instance_{i+1}.jpg')
+        plt.savefig(image_filename)
+        plt.close()
 
 
 if __name__ == "__main__":
@@ -60,6 +90,7 @@ if __name__ == "__main__":
     dataset = generate_hcvrp_data(opts.dataset_size, opts.graph_size, opts.veh_num)
     print(dataset[0])
     save_dataset(dataset, filename)
+    visualize_hcvrp_data(dataset, os.path.join(data_dir, 'visualization'))
 
 
 
