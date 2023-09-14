@@ -1,7 +1,7 @@
 import pickle
 
 # Specify the path to your pickle file
-pickle_file_path = 'hcvrp_v3_40_seed24610-hcvrp40_rollout_20230809T064053_epoch-49-greedy-t1-0-1280.pkl'
+pickle_file_path = 'hcvrp_40_seed24610/hcvrp_40_seed24610-hcvrp40_rollout_v100_20230911T095007_epoch-99-greedy-t1-0-1280.pkl'
 
 # Load data from the pickle file
 with open(pickle_file_path, 'rb') as f:
